@@ -1,0 +1,44 @@
+<%@ page import="applcommon.ParseValue" %>
+<%@ page import="com.infy.bbu.jsputil.*"%>
+<%@ taglib uri="taglib.tld" prefix="arjsp" %>
+<%@ page import="applcommon.ProfileProperties" %>
+<%@ page import="applcommon.ParseValue" %>
+<%@ page import="FABCommon.SecurityInfo70"%>
+<arjsp:init groupName="Customize" isEntryPoint="false" />
+
+<%
+
+                 String sProfileId = ProfilesManager.getProfileInSession(session);
+                 String sSubGrpName = (String)ARJspCurr.getInput("subGroupName","");
+                 String sGrpName = ARJspCurr.getCurrentGroup();
+                 String sPopUpExceptionWindow = (String)ARJspCurr.getInput(sGrpName+".PopUpExceptionWindow" ,"false");
+                 String sReferralMode = (String)ARJspCurr.getInput("refSubMode" ,"");
+                 ARJspCurr.setInput(sGrpName+".PopUpExceptionWindow","false");
+                 SecurityInfo70 securityInfo = (SecurityInfo70)session.getAttribute("FinUserInfo");
+
+%>
+
+<script>
+
+                 var sPopUpExceptionWindow = '<%=sPopUpExceptionWindow%>';
+                 var sReferralMode = '<%=sReferralMode%>' ;
+                 var subGroupName = '<%=ParseValue.checkString(ARJspCurr.getInput("subGroupName",""))%>';
+                 var CustomerName = '<%=ParseValue.checkString(ARJspCurr.getInput(sSubGrpName+".CustomerName",""))%>';
+                 var AccType = '<%=ParseValue.checkString(ARJspCurr.getInput(sSubGrpName+".AccType",""))%>';
+                 var Balance = '<%=ParseValue.checkString(ARJspCurr.getInput(sSubGrpName+".Balance",""))%>';
+                 var funcCode = '<%=ParseValue.checkString(ARJspCurr.getInput(sSubGrpName+".funcCode",""))%>';
+                 var AccNo = '<%=ParseValue.checkString(ARJspCurr.getInput(sSubGrpName+".AccNo",""))%>';
+                // var AccType = '<%=ParseValue.checkString(ARJspCurr.getInput(sSubGrpName+".AccType",""))%>';
+
+
+</script>
+
+
+
+ <script language="javascript" src="../Renderer/custom/props/cadsprops.js"></script>
+
+                 <script language="JavaScript">
+
+                 printBlock();
+                 printFooterBlock();
+                 </script>
