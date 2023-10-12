@@ -1,0 +1,242 @@
+//----------------block start---------------------//
+
+function printBlock()
+{
+        writeCustomHeader("cads_crit");
+        with (document)
+{
+        write('<table border="0" cellspacing="0" cellpadding="0" class="ctable">');
+        write('<tr>');
+        write('<td>');
+        write('<table border="0" cellspacing="0" cellpadding="0">');
+        write('<tr>');
+        write('<td class="page-heading"> CUSTOMER ACCCOUNT DETAILS </td>');
+        write('</tr>');
+        write('</table>');
+        write('<!-- DETAILSBLOCK-BEGIN -->');
+        write('<table border="0" cellpadding="0" cellspacing="0" width="100%">');
+        write('<tr>');
+        write('<td valign="top">');
+        write('<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tableborder">');
+        write('<tr>');
+        write('<td>');
+        write('<table width="100%" border="0" cellpadding="0" cellspacing="0" class="innertable">');
+        write('<tr>');
+        write('<td>');
+        write('<table width="100%" border="0" cellpadding="0" cellspacing="0" class="innertabletop1">');
+        write('<tr>');
+        write('<td height="25" colspan="5" align="right">');
+        write('<table border="0" cellspacing="0" cellpadding="0">');
+        write('<tr>');
+        write('<td align="right">');
+        write('<a href="javascript:showHelpFile(\'crit_help.htm\');" id="sLnk1">');
+        write('<img hotKeyId="finHelp" src="../Renderer/images/'+applangcode+'/help.gif" width="47" height="21" vspace="1" border="0" />');
+        write('</a>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('</td>');
+        write('</tr>');
+
+//-----------------------------------FUNCTION---------------------------------//
+
+        write('<tr>');
+        write('<td class="textlabel" style="width: 198px">' + jspResArr.get("FLT436700"));
+        setMandatory("Y");
+        write('</td>');
+        write('<td class="textfield">');
+
+        write('<select class="textfieldfont"  name="' + subGroupName + '.funcCode" id="funcCode" ' + '>');
+        write('<option value="--SELECT--">' + jspResArr.get("FLT436701") + '</option>');
+        write('<option value="A">' + jspResArr.get("FLT436702") + '</option>');
+        write('<option value="M">' + jspResArr.get("FLT436703") + '</option>');
+        write('<option value="I">' + jspResArr.get("FLT436704") + '</option>');
+        write('<option value="D">' + jspResArr.get("FLT436705") + '</option>');
+        write('<option value="V">' + jspResArr.get("FLT436706") + '</option>');
+        write('</select>');
+        write('</td>');
+
+        write('<td class="columnwidth"> </td>');
+        write('<td class="textlabel"> </td>');
+        write('<td class="textfield"> </td>');
+        write('</tr>');
+//---------------------------------AccNo--------------------------------------------//
+
+
+        write('<tr>');
+        write('<td class="textlabel">' + jspResArr.get("FLT436707"));
+        setMandatory("Y");
+        write('</td>');
+        write('<td class="textfield">');
+        write('<input class="textfieldfont" type="text"  maxlength="16" name="' + subGroupName + '.AccNo" id="AccNo" ' +'>');
+
+
+
+         write('<a id="sLnk2" target="_self" href="javascript:showAccountIdList(document.forms[0].AccNo,\'F\',document.forms[0].crncyCode);fnFetchAcctDtls()">');
+         write('<img border="0" height="17" hotKeyId="search1" src="../Renderer/images/'+applangcode+'/search_icon.gif" width="16">');
+         write('</a>');
+
+
+        write('</td>');
+        write('</tr>');
+
+ //-----------------------------------AccType-------------------------------------------//
+
+        /*      write('<tr>');
+                write('<td class="textlabel">' + jspResArr.get("FLT637209"));
+                setMandatory("Y");
+                 write('</td>');
+                 write('<td class="textfield">');
+        //       write('<input class="textfieldfont" type="text"  maxlength="16" name="' + subGroupName + '.AccType" id="AccType" ' +'>');
+                 write('<input type="radio" name="' + subGroupName + '.AccType" id="AccType" value="Savings" fmnd="y"> Savings');
+                 write('<input type="radio" name="' + subGroupName + '.AccType" id="AccType" value="Current" fmnd="Y"> Current');
+        //       write('<input type="radio" name="' + subGroupName + '.AccType" id="AccType" value="LoanAc" fmnd="Y"> LoanAc');
+//      write('<td class="columnwidth"> </td>');
+//      write('<td class="textlabel"> </td>');
+  //      write('<td class="textfield"> </td>');
+                 write('</td>');
+                write('</tr>')*/
+
+//----------------------------end block-------------------------------------------------//
+
+ write('</table>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('<!-- DETAILSBLOCK-END -->');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        }
+
+         }
+
+
+//----------------------------------------------FOOTER BLOCK START-----------------------------//
+
+function printFooterBlock()
+{
+        with (document) {
+        if ((sReferralMode == 'I')||(sReferralMode == 'S')){
+        write('<div align="left" class="ctable">');
+        if (sReferralMode == 'S'){
+        write('<input type="button" class="Button" id="Submit" value="SUBMIT" onClick="javascript:return doRefSubmit(this);" hotKeyId="Submit" >');
+        }
+        writeRefFooter();
+        write('<input type="button" class="Button" id="_BackRef_" value="CANCEL" onClick="javascript:return doSubmit(this.id);" hotKeyId="Cancel" >');
+        write('</div>');
+        }else{
+        write('<div class="ctable">');
+        write('<input id="Accept" name="Go" type="button" class="button" onClick="javascript:return cads_crit_ONCLICK1(this,this);"" value="Go" hotKeyId="Go">');
+        write('<input id="Clear" name="Clear" type="button" class="button" value="Clear"        onClick="javascript:return cads_crit_ONCLICK2(this,this);"">');
+        writeFooter();
+        write('</div>');
+        }
+        } //End with()
+        }//End function
+//----------------------------------------FUNCTION ON LOAD-----------------------------------------//
+
+function fnOnLoad()
+ {
+
+        var ObjForm = document.forms[0];
+
+        pre_ONLOAD('cads_crit',this);
+
+        var funcName = "this."+"locfnOnLoad";
+        if(eval(funcName) != undefined){
+                eval(funcName).call(this);
+        }
+
+        fnPopulateControlValues();
+
+        fnPopUpExceptionWindow(ObjForm.actionCode);
+        if((typeof(WF_IN_PROGRESS) != "undefined") && (WF_IN_PROGRESS == "PEAS")){
+                checkCustErrExecNextStep(Message);
+        }
+  post_ONLOAD('cads_crit',this);
+        document.forms[0].funcCode.focus();
+}
+//-----------------------------------------MANDATORY FIELD VALUES------------------------------------//
+function fnCheckMandatoryFields()
+{
+        var ObjForm = document.forms[0];
+
+        return true;
+}
+//-------------------------------------CONTROL VALUES------------------------------------------------//
+
+function fnPopulateControlValues()
+{
+        var ObjForm = document.forms[0];
+
+        ObjForm.funcCode.value = funcCode;
+        ObjForm.AccNo.value = AccNo;
+       // ObjForm.AccType.value = AccType;
+
+        /*ObjForm.UpdateRequest.value = UpdateRequest;*/
+}
+
+function cads_crit_ONCLICK1(obj,p1)
+{
+        var retVal = "";
+        if (preEventCall('cads_crit',obj) == false) {
+                return false;
+        }
+        if ((retVal =  fnValAndSubmit(p1)) == false) {
+                return false;
+        }
+        if (postEventCall('cads_crit',obj) == false) {
+                return false;
+        }
+        return (retVal == undefined) ? true : retVal;
+}
+
+function cads_crit_ONCLICK2(obj,p1)
+{
+        var retVal = "";
+        if (preEventCall('cads_crit',obj,'ONCLICK') == false) {
+                        return false;
+        }
+ if (preEventCallForLocale('cads_crit',obj,'ONCLICK') == false) {
+                        return false;
+        }
+        if ((retVal = fnOnButtonClick(p1)) == false) {
+                        return false;
+        }
+        if (postEventCallForLocale('cads_crit',obj,'ONCLICK') == false) {
+                        return false;
+        }
+        if (postEventCall('cads_crit',obj,'ONCLICK') == false) {
+                        return false;
+        }
+        return (retVal == undefined) ? true : retVal;
+
+}
+function fnOnButtonClick(objBtn)
+{
+
+        objForm = document.forms[0];
+
+        if(objBtn.id == 'Clear')
+        {
+                if(confirm(finbranchResArr.get("FAT000360"))) {
+                objForm.actionCode.value = objBtn.id;
+                formReset(objForm);
+                objForm.submit();
+                }
+        }
+        else
+        {
+                if(!fnValidateForm())
+                        return false;
+                doSubmit(objBtn.id);
+        }
+        return true;
+}
