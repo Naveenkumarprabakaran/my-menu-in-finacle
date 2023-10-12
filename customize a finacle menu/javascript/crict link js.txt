@@ -1,0 +1,32 @@
+function fnValidateData()
+
+                {
+                if (!fnCheckMandatoryFields())
+                {
+                        return false;
+                }
+
+                if(document.forms[0].funcCode.value== "")
+                {
+                        alert("Enter the funcCode");
+                        document.forms[0].funcCode.focus();
+                        return false;
+                }
+
+               if(document.forms[0].AccNo.value =="")
+                {
+                        alert("Please Enter the AccNo");
+                        document.forms[0].AccNo.focus();
+                        return false;
+                }
+
+
+             /*  if(document.forms[0].AccType.value =="")
+                {
+                        alert("Please Enter the AccType");
+                        document.forms[0].AccType.focus();
+                        return false;
+                }*/
+
+                return true;
+                }

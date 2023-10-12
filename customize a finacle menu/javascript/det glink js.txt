@@ -1,0 +1,272 @@
+function printBlock()
+{
+        writeCustomHeader("cads_det");
+        with (document){
+//        write('<input type="hidden" id="TranPurpose" fdt="uidate" mneb1="N" vFldId=TranPurpose_ui" name="' + subGroupName + '.TranPurpose">');
+
+//------------------------------------TABLE START-----------------------------------------------------------//
+        write('<table border="0" cellspacing="0" cellpadding="0" class="ctable">');
+        write('<tr>');
+        write('<td>');
+
+        write('<table border="0" cellspacing="0" cellpadding="0">');
+        write('<tr>');
+        write('<td class="page-heading"> CUSTOMER ACCOUNT DETAILS </td>');
+        write('</tr>');
+        write('</table>');
+        write('<table border="0" cellpadding="0" cellspacing="0" width="100%">');
+        write('<tr>');
+        write('<td class="textlabel">' + jspResArr.get("FLT436708") + '</td>');
+        write('<td class="textfielddisplaylabel">');
+        write('<label id="compField">' + fnGetFuncCodeDesc(funcCode) + '</label>');
+        write('</td>');
+        write('<td class="columnwidth">&nbsp; </td>');
+        write('<td class="textlabel">' + jspResArr.get("FLT436709") + '</td>');
+        write('<td class="textfielddisplaylabel">');
+        write('<label id="compField">' + AccNo + '</label>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('<br />');
+
+//--------------------------------------------crict page call---------------------------------------------//
+
+ write('<!-- DETAILSBLOCK-BEGIN -->');
+        write('<table border="0" cellpadding="0" cellspacing="0" width="100%">');
+        write('<tr>');
+        write('<td valign="top">');
+        write('<table width="100%" border="0" cellpadding="0" cellspacing="0" class="table">');
+        write('<tr>');
+        write('<td>');
+        write('<table width="100%" border="0" cellpadding="0" cellspacing="0" class="innertable">');
+        write('<tr>');
+        write('<td>');
+        write('<table width="100%" border="0" cellpadding="0" cellspacing="0" class="innertabletop1">');
+        write('<tr>');
+        write('<td height="25" colspan="5" align="right">');
+        write('<table border="0" cellspacing="0" cellpadding="0">');
+        write('<tr>');
+        write('<td align="right">');
+        write('<a href="javascript:showHelpFile(\'det_help.htm\');" id="sLnk1">');
+        write('<img  hotKeyId="finHelp" src="../Renderer/images/'+applangcode+'/help.gif" width="47" height="21" vspace="1" border="0" />');
+        write('</a>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('</td>');
+        write('</tr>');
+        write('</br>');
+
+//----------------------------------------------------------customer name------------------------------------------------------------//
+
+
+  write('<tr>');
+        write('<td class="textlabel">' + jspResArr.get("FLT436710"));
+        setMandatory("Y");
+        write('</td>');
+        write('<td class="textfield">');
+        write('<input class="textfieldfont" type="text" OnLoad="return fetchdata()" isNaN maxlength="20" name="' + subGroupName + '.CustomerName"  id="CustomerName" ' +  '>');
+        write('</td>');
+
+
+
+//---------------------------------------------------------Account type---------------------------------------------------------------//
+
+
+ write('<td class="textlabel">' + jspResArr.get("FLT436711"));
+        setMandatory("Y");
+        write('<td class="textfield">');
+        write('<select class="textfieldfont" type="text" isNaN maxlength="10" name="' + subGroupName + '.AccType"  id="AccType" '  + '>');
+
+
+//----------------------------------------------------select option-------------------------------------------------------//
+        write('<option value="--SELECT--">' + jspResArr.get("FLT436713") + '</option>');
+        write('<option value="SB">' + jspResArr.get("FLT436714") + '</option>');
+        write('<option value="CA">' + jspResArr.get("FLT436715") + '</option>');
+        write('<option value="TD">' + jspResArr.get("FLT436716") + '</option>');
+        write('<option value="LA">' + jspResArr.get("FLT436717") + '</option>');
+        write('</select>');
+//-----------------------------------------------------------------------------------------------------------------------------//
+
+        write('</td>');
+        write('<td class="columnwidth"> </td>');
+        write('</td>');
+        write('</tr>');
+
+
+//---------------------------------------------------------------Balance---------------------------------------------------------//
+
+
+
+         write('<tr>');
+         write('<td class="textlabel">' + jspResArr.get("FLT436712"));
+         setMandatory("N");
+         write('</td>');
+         write('<td class="textfield">');
+         write('<input class="textfieldfont" type="text"  maxlength="16" name="' + subGroupName + '.Balance" id="Balance" ' +'>');
+        //write('<td class="columnwidth"> </td>')
+         write('</td>');
+         write('</tr>');
+
+//----------------------------------------------------END TABLE--------------------------------------------------------------------//
+
+         write('</table>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        write('<!-- DETAILSBLOCK-END -->');
+        write('</td>');
+        write('</tr>');
+        write('</table>');
+        } //End with()
+       } //End function
+//----------------------------------------------------------------FOOTER BLOCK-----------------------------------------------------//
+function printFooterBlock()
+{
+        with (document) {
+        if ((sReferralMode == 'I')||(sReferralMode == 'S')){
+        write('<div align="left" class="ctable">');
+        if (sReferralMode == 'S'){
+        write('<input type="button" class="Button" id="Submit" value="SUBMIT" onClick="javascript:return doRefSubmit(this);" hotKeyId="Submit" >');
+        }
+        writeRefFooter();
+        write('<input type="button" class="Button" id="_BackRef_" value="CANCEL" onClick="javascript:return doSubmit(this.id);" hotKeyId="Cancel" >');
+        write('</div>');
+        }else{
+        if(funcCode !='I'){
+        write('<div class="ctable">');
+        write('<input id="Submit" name="Submit" type="button" class="button"    onClick="javascript:return cads_det_ONCLICK2(this,this);"" value="Submit" hotKeyId="Submit">');
+        write('<input id="Cancel" name="Cancel" type="button" class="button" value="Cancel"     onClick="javascript:return cads_det_ONCLICK4(this,this.id);"" hotKeyId="Cancel">');
+        }else{
+        write('&nbsp;<input class="button" type="button" id="Back" value="BACK" onClick="javascript:return doSubmit(this.id)" hotKeyId="Ok">');
+        }
+        writeFooter();
+        write('</div>');
+        }
+        } //End with()
+        }//End function
+
+//-------------------------------------------------------------------FUNCTION ON LOAD-----------------------------------------------------//
+function fnOnLoad()
+{
+
+
+        pre_ONLOAD('cads_det',this)
+   {
+   }
+
+        var funcName = "this."+"locfnOnLoad";
+        if(eval(funcName) != undefined){
+        eval(funcName).call(this);
+        }
+        {
+        }
+
+//-----------------------------------------------------------------CONTROL VALUES--------------------------------------------------------//
+        fnPopulateControlValues();
+
+        //fnAssignDateOnLoad(ObjForm);
+        //fnPopUpExceptionWindow(ObjForm.actionCode);
+        if((typeof(WF_IN_PROGRESS) != "undefined") && (WF_IN_PROGRESS == "PEAS")){
+        checkCustErrExecNextStep(Message);
+        }
+
+        post_ONLOAD('cads_det',this);
+}
+
+//------------------------------------------------------------------MANDATORY FIELD-------------------------------------------------------//
+function fnCheckMandatoryFields()
+{
+        var ObjForm = document.forms[0];
+
+        return true;
+}
+
+//-------------------------------------------------------------------CONTROL VALUES------------------------------------------------------//
+function fnPopulateControlValues()
+{
+
+        var ObjForm = document.forms[0];
+
+        ObjForm.CustomerName.value = CustomerName;
+        ObjForm.AccType.value = AccType;
+        ObjForm.Balance.value = Balance;
+}
+
+function fnCheckControls()
+{
+        var ObjForm = document.forms[0];
+}
+
+function cads_det_ONCHANGE1(obj,p1,p2)
+{
+   var retVal = "";
+        if (pre_ONCHANGE('cads_det',obj) == false) {
+                return false;
+        }
+        if ((retVal = onBlurFormatDate(p1)) == false) {
+                return false;
+        }
+        if ((retVal = fnAssignDateOnEnter(p2)) == false) {
+                return false;
+        }
+        if (post_ONCHANGE('cads_det',obj) == false) {
+                return false;
+        }
+        return (retVal == undefined) ? true : retVal;
+}
+
+function cads_det_ONCLICK2(obj,p1)
+{
+        var retVal = "";
+        if (preEventCall('cads_det',obj) == false) {
+                return false;
+        }
+        if ((retVal =  fnValAndSubmit(p1)) == false) {
+                return false;
+        }
+        if (postEventCall('cads_det',obj) == false) {
+                return false;
+        }
+        return (retVal == undefined) ? true : retVal;
+}
+function cads_det_ONCLICK4(obj,p1)
+{
+
+        var retVal = "";
+        if (preEventCall('cads_det',obj) == false) {
+                return false;
+        }
+        if ((retVal =  doSubmit(p1)) == false) {
+                return false;
+        }
+        if (postEventCall('cads_det',obj) == false) {
+                return false;
+     }
+        return (retVal == undefined) ? true : retVal;
+}
+
+function cads_det_ONBLUR1(obj,p1,p2)
+{
+
+                var retVal = "";
+                if (pre_ONBLUR('cads_det',obj) == false) {
+                        return false;
+                }
+                if ((retVal = onBlurFormatDate(p1)) == false) {
+                        return false;
+                }
+                if ((retVal = fnAssignDateOnEnter(p2)) == false) {
+                        return false;
+                }
+                if (post_ONBLUR('cads_det',obj) == false) {
+                        return false;
+                }
+                return (retVal == undefined) ? true : retVal;
+}

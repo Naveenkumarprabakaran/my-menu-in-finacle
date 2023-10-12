@@ -1,0 +1,30 @@
+function fnValidateData()
+                {
+
+                if (!fnCheckMandatoryFields())
+                {
+                        return false;
+                }
+
+                if(document.forms[0].CustomerName.value =="")
+                {
+                        alert("Enter the CustomerName");
+                        document.forms[0].CustomerName.focus();
+                        return false;
+                }
+
+                if(document.forms[0].AccType.value =="")
+                {
+                        alert("Enter the AccType");
+                        document.forms[0].AccType.focus();
+                        return false;
+                }
+
+                if(document.forms[0].Balance.value =="")
+                {
+                        alert("Enter the Balance");
+                        document.forms[0].Balance.focus();
+                        return false;
+                }
+                return true;
+                }
